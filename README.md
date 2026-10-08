@@ -32,9 +32,11 @@ Hook работает в отдельном потоке, независимо �
 ## Сборка
 
 Нужны CMake 3.24+, Visual Studio Build Tools с C++ и Windows SDK.
-Рядом должен находиться исходный проект `../win32-custom-widgets`.
-Он подключается через CMake и включается в EXE при сборке.
-В PowerShell из этой папки:
+Скачайте или клонируйте [Win32 Custom Widgets](https://github.com/Laynholt/win32-custom-widgets/tree/master)
+и положите папку `win32-custom-widgets` рядом с папкой `KeyboardCleaner`.
+При скачивании ZIP переименуйте папку `win32-custom-widgets-master` в `win32-custom-widgets`.
+Библиотека подключается через CMake из `../win32-custom-widgets` и включается в EXE при сборке.
+В PowerShell из папки `KeyboardCleaner`:
 
 ```powershell
 cmake -S . -B build -G "Visual Studio 18 2026" -A x64
