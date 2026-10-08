@@ -1,0 +1,28 @@
+#include <windows.h>
+#include "AppVersion.h"
+#include "updater.rc"
+1 RT_MANIFEST "app.manifest"
+1 ICON "app.ico"
+1 VERSIONINFO
+ FILEVERSION KEYBOARD_CLEANER_FILE_VERSION
+ PRODUCTVERSION KEYBOARD_CLEANER_FILE_VERSION
+ FILEFLAGSMASK 0x3fL
+ FILEFLAGS 0
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+BEGIN
+ BLOCK "StringFileInfo"
+ BEGIN
+  BLOCK "040904b0"
+  BEGIN
+   VALUE "FileDescription", "Keyboard Cleaner\0"
+   VALUE "ProductName", "Keyboard Cleaner\0"
+   VALUE "FileVersion", KEYBOARD_CLEANER_VERSION "\0"
+   VALUE "ProductVersion", KEYBOARD_CLEANER_VERSION "\0"
+  END
+ END
+ BLOCK "VarFileInfo"
+ BEGIN
+  VALUE "Translation", 0x409, 1200
+ END
+END
