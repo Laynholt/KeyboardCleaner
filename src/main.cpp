@@ -23,7 +23,9 @@ using Gdiplus::RectF;
 LRESULT CALLBACK SmoothButtonProc(HWND window, UINT message, WPARAM wParam, LPARAM lParam,
                                   UINT_PTR, DWORD_PTR) {
     // A binary window region cuts off the widget's antialiased outer edge.
-    if (message == WM_PAINT) SetWindowRgn(window, nullptr, FALSE);
+    RECT region{};
+    if (message == WM_PAINT && GetWindowRgnBox(window, &region) != ERROR)
+        SetWindowRgn(window, nullptr, FALSE);
     return DefSubclassProc(window, message, wParam, lParam);
 }
 
@@ -155,7 +157,7 @@ struct App {
         options.accessibleName = accessible;
         options.bounds = {0, 0, 100, 36}; options.style = WS_VISIBLE;
         const auto button = wcw::CreateButton(options);
-        if (button && !SetWindowSubclass(button, SmoothButtonProc, 1, 0)) {
+        if (button && id == CleanId && !SetWindowSubclass(button, SmoothButtonProc, 1, 0)) {
             DestroyWindow(button);
             return nullptr;
         }
