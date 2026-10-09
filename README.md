@@ -7,8 +7,9 @@
 ## Запуск
 
 Скачайте **KeyboardCleaner.exe** из [релизов](https://github.com/Laynholt/KeyboardCleaner/releases)
-и запустите. Установка и дополнительные DLL не нужны. Visual C++ Redistributable
-для этой Release-сборки не требуется: библиотеки выполнения C++ встроены в EXE.
+и запустите. Для сборки Release x64 с динамической CRT (`/MD`) нужен актуальный
+[Microsoft Visual C++ Redistributable x64](https://aka.ms/vc14/vc_redist.x64.exe).
+Если пакет отсутствует или устарел, установите или обновите его. Visual Studio для запуска не требуется.
 
 Отпустите все клавиши и нажмите **«Начать чистку»**. Мышь и тачпад продолжат работать.
 Для выхода нажмите **«Завершить чистку»** или удерживайте **левый Ctrl + правый Shift 1,5 секунды**.
@@ -49,7 +50,7 @@ ctest --test-dir build -C Release --output-on-failure
 Если `build` настроен другим генератором, добавьте `--fresh` к команде настройки:
 кэш CMake будет обновлён, а файлы рядом с EXE сохранятся.
 Другой путь к библиотеке: `-DWCW_SOURCE_DIR="F:/path/to/win32-custom-widgets"`.
-EXE создаётся в `build/bin/Release/KeyboardCleaner.exe`. MSVC runtime статически включён.
+EXE создаётся в `build/bin/Release/KeyboardCleaner.exe`. MSVC runtime подключается динамически (`/MD` в Release).
 
 Release x64 пересобран с Build Tools 2026, MSVC 19.51.36260, Windows SDK
 10.0.26100.0 и CMake 4.4.4.

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.24)
 project(KeyboardCleaner VERSION 1.0.1 LANGUAGES CXX RC)
-set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL")
 configure_file(src/AppVersion.h.in generated/AppVersion.h @ONLY)
 set_source_files_properties(resources/app.rc resources/updater.rc PROPERTIES
     OBJECT_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/resources/update.ps1")
